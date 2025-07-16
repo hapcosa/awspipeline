@@ -5,5 +5,5 @@ const requestHandler = (req, res) => {
 };
 const server = http.createServer(requestHandler);
 server.listen(port, '0.0.0.0',() => {
-    console.log(`Servidor corriendo en puerto '0.0.0.0' ${port}`);
+    console.log(`funciona Servidor corriendo en puerto '0.0.0.0' ${port}`);
 });
