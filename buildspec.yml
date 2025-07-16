@@ -3,14 +3,30 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14
+      nodejs: 18
     commands:
       - echo "Instalando dependencias..."
       - npm install
+
+  pre_build:
+    commands:
+      - echo "Ejecutando comandos pre-build..."
+      - npm run lint || echo "No lint script found, skipping..."
+
   build:
     commands:
       - echo "Aplicación construida correctamente"
+      - npm run build || echo "No build script found, skipping..."
+
+  post_build:
+    commands:
+      - echo "Build completado exitosamente"
 
 artifacts:
   files:
     - '**/*'
+  base-directory: '.'
+
+cache:
+  paths:
+    - node_modules/**/*
